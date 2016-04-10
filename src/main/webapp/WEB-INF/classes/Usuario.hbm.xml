@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2016 1:34:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.dsoft.car.marketplace.domain.Usuario" table="usuario" catalog="marketplace">
+        <id name="idUsuario" type="java.lang.Long">
+            <column name="id_usuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="comuna" class="cl.dsoft.car.marketplace.domain.Comuna" fetch="select">
+            <column name="id_comuna" not-null="true" />
+        </many-to-one>
+        <property name="nombreusuario" type="string">
+            <column name="nombreusuario" length="32" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="32" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="32" />
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column name="apellido_paterno" length="32" />
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column name="apellido_materno" length="32" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="64" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="32" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="activo" not-null="true" />
+        </property>
+        <set name="proveedorSucursalUsuarios" table="proveedor_sucursal_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.ProveedorSucursalUsuario" />
+        </set>
+        <set name="vehiculos" table="vehiculo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_usuario" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.Vehiculo" />
+        </set>
+    </class>
+</hibernate-mapping>

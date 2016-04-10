@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2016 1:34:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.dsoft.car.marketplace.domain.Traccion" table="traccion" catalog="marketplace">
+        <id name="idTraccion" type="short">
+            <column name="id_traccion" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="32" not-null="true" />
+        </property>
+        <set name="vehiculos" table="vehiculo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_traccion" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.Vehiculo" />
+        </set>
+    </class>
+</hibernate-mapping>

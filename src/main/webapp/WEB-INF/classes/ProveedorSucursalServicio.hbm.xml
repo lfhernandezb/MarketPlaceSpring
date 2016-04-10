@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2016 1:34:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.dsoft.car.marketplace.domain.ProveedorSucursalServicio" table="proveedor_sucursal_servicio" catalog="marketplace">
+        <id name="idProveedorSucursalServicio" type="java.lang.Long">
+            <column name="id_proveedor_sucursal_servicio" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="proveedorSucursal" class="cl.dsoft.car.marketplace.domain.ProveedorSucursal" fetch="select">
+            <column name="id_proveedor_sucursal" not-null="true" />
+        </many-to-one>
+        <many-to-one name="servicio" class="cl.dsoft.car.marketplace.domain.Servicio" fetch="select">
+            <column name="id_servicio" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoVehiculo" class="cl.dsoft.car.marketplace.domain.TipoVehiculo" fetch="select">
+            <column name="id_tipo_vehiculo" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

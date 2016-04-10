@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2016 1:34:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.dsoft.car.marketplace.domain.Proveedor" table="proveedor" catalog="marketplace">
+        <id name="idProveedor" type="java.lang.Integer">
+            <column name="id_proveedor" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bloqueoProveedor" class="cl.dsoft.car.marketplace.domain.BloqueoProveedor" fetch="select">
+            <column name="id_bloqueo_proveedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estadoProveedor" class="cl.dsoft.car.marketplace.domain.EstadoProveedor" fetch="select">
+            <column name="id_estado_proveedor" not-null="true" />
+        </many-to-one>
+        <property name="rut" type="string">
+            <column name="rut" length="16" />
+        </property>
+        <property name="razonSocial" type="string">
+            <column name="razon_social" length="128" />
+        </property>
+        <property name="nombreFantasia" type="string">
+            <column name="nombre_fantasia" length="128" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="256" />
+        </property>
+        <property name="telefono1" type="string">
+            <column name="telefono1" length="16" />
+        </property>
+        <property name="telefono2" type="string">
+            <column name="telefono2" length="16" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="16" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="64" />
+        </property>
+        <property name="web" type="string">
+            <column name="web" length="128" />
+        </property>
+        <property name="fotos" type="string">
+            <column name="fotos" length="64" />
+        </property>
+        <property name="textoHtml" type="string">
+            <column name="texto_html" length="65535" />
+        </property>
+        <property name="latitud" type="java.lang.Float">
+            <column name="latitud" precision="12" scale="0" />
+        </property>
+        <property name="longitud" type="java.lang.Float">
+            <column name="longitud" precision="12" scale="0" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" />
+        </property>
+        <set name="marcaProveedors" table="marca_proveedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_proveedor" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.MarcaProveedor" />
+        </set>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_proveedor" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.Factura" />
+        </set>
+        <set name="proveedorSucursals" table="proveedor_sucursal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_proveedor" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.ProveedorSucursal" />
+        </set>
+    </class>
+</hibernate-mapping>

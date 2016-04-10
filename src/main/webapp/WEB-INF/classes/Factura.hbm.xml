@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2016 1:34:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.dsoft.car.marketplace.domain.Factura" table="factura" catalog="marketplace">
+        <id name="folio" type="int">
+            <column name="folio" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="medioPago" class="cl.dsoft.car.marketplace.domain.MedioPago" fetch="select">
+            <column name="id_medio_pago" not-null="true" />
+        </many-to-one>
+        <many-to-one name="proveedor" class="cl.dsoft.car.marketplace.domain.Proveedor" fetch="select">
+            <column name="id_proveedor" not-null="true" />
+        </many-to-one>
+        <property name="numeroTx" type="string">
+            <column name="numero_tx" length="32" />
+        </property>
+        <property name="detallePago" type="string">
+            <column name="detalle_pago" length="256" />
+        </property>
+        <property name="pagada" type="java.lang.Boolean">
+            <column name="pagada" />
+        </property>
+    </class>
+</hibernate-mapping>

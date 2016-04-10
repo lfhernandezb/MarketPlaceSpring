@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 21, 2016 1:34:37 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cl.dsoft.car.marketplace.domain.Comuna" table="comuna" catalog="marketplace">
+        <id name="idComuna" type="int">
+            <column name="id_comuna" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="region" class="cl.dsoft.car.marketplace.domain.Region" fetch="select">
+            <column name="id_region" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="128" not-null="true" />
+        </property>
+        <set name="proveedorSucursals" table="proveedor_sucursal" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_comuna" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.ProveedorSucursal" />
+        </set>
+        <set name="cotizacions" table="cotizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_comuna" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.Cotizacion" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_comuna" not-null="true" />
+            </key>
+            <one-to-many class="cl.dsoft.car.marketplace.domain.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

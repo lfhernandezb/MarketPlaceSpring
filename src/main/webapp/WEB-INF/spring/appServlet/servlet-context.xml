@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="cl.dsoft.car.marketplace" />
+
+    <beans:bean id="mpTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">  
+    	<beans:property name="sessionFactory" ref="sessionFactory"></beans:property>  
+    </beans:bean>
+    
+    <beans:bean id="Adjudicacion" class="cl.dsoft.car.marketplace.domain.AdjudicacionHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="BloqueoProveedor" class="cl.dsoft.car.marketplace.domain.BloqueoProveedorHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Combustible" class="cl.dsoft.car.marketplace.domain.CombustibleHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Comuna" class="cl.dsoft.car.marketplace.domain.ComunaHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Cotizacion" class="cl.dsoft.car.marketplace.domain.CotizacionHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="EstadoProveedor" class="cl.dsoft.car.marketplace.domain.EstadoProveedorHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Factura" class="cl.dsoft.car.marketplace.domain.FacturaHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Marca" class="cl.dsoft.car.marketplace.domain.MarcaHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="MarcaProveedor" class="cl.dsoft.car.marketplace.domain.MarcaProveedorHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="MedioPago" class="cl.dsoft.car.marketplace.domain.MedioPagoHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Modelo" class="cl.dsoft.car.marketplace.domain.ModeloHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="OfertaCotizacion" class="cl.dsoft.car.marketplace.domain.OfertaCotizacionHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Pais" class="cl.dsoft.car.marketplace.domain.PaisHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Proveedor" class="cl.dsoft.car.marketplace.domain.ProveedorHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="ProveedorSucursal" class="cl.dsoft.car.marketplace.domain.ProveedorSucursalHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="ProveedorSucursalServicio" class="cl.dsoft.car.marketplace.domain.ProveedorSucursalServicioHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="ProveedorSucursalUsuario" class="cl.dsoft.car.marketplace.domain.ProveedorSucursalUsuarioHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Region" class="cl.dsoft.car.marketplace.domain.RegionHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Rol" class="cl.dsoft.car.marketplace.domain.RolHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Servicio" class="cl.dsoft.car.marketplace.domain.ServicioHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="TipoTransmision" class="cl.dsoft.car.marketplace.domain.TipoTransmisionHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="TipoVehiculo" class="cl.dsoft.car.marketplace.domain.TipoVehiculoHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Traccion" class="cl.dsoft.car.marketplace.domain.TraccionHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Usuario" class="cl.dsoft.car.marketplace.domain.UsuarioHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+    <beans:bean id="Vehiculo" class="cl.dsoft.car.marketplace.domain.VehiculoHome">  
+    	<beans:property name="template" ref="mpTemplate"></beans:property>  
+    </beans:bean>  
+
+</beans:beans>
