@@ -530,7 +530,7 @@ font-weight: bold;
 display: block;
 /*margin-left: 215px;*/
 }
-#login label.success {
+#login label.message {
 font-size: 0.8em;
 color: #006600;
 font-weight: bold;

@@ -48,5 +48,9 @@ ddaccordion.init({
 		//do nothing
 	}
 })
+
+    function formSubmit() {
+        document.getElementById("logoutForm").submit();
+    }
 </script>
 
